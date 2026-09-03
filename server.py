@@ -19,7 +19,7 @@ app = FastAPI(title="trektripster-server", description="API for answering querie
 origins = [
     "http://localhost:3000",    # React local development
     "http://localhost:5173",    # Vite local development
-    "https://yourdomain.com",   # Production domain
+    "https://trektripster-ui.vercel.app",   # Production domain
 ]
 
 app.add_middleware(
