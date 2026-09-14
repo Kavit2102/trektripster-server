@@ -2,17 +2,10 @@ from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from trektripster import TrekTripster
-from sqlmodel import Field, Session, SQLModel, create_engine, select
-
-class Hero(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
-    name: str = Field(index=True)
-    secret_name: str
-    age: int | None = Field(default=None, index=True)
 
 
-DATABASE_file_name = "database.db"
-DATABASE_url = f"sqlite:///{DATABASE_file_name}"
+# DATABASE_file_name = "database.db"
+# DATABASE_url = f"sqlite:///{DATABASE_file_name}"
 
 app = FastAPI(title="trektripster-server", description="API for answering queries based on uploaded documents")
 

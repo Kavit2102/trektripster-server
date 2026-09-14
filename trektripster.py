@@ -6,8 +6,9 @@ from qdrant_client.http.models import Distance, VectorParams
 from langchain_qdrant import QdrantVectorStore
 import os
 from langchain_openai import ChatOpenAI
-from dbinstance import embeddings,collection, qdrantClient
+from instances import embeddings,collection, qdrantClient
 from dotenv import load_dotenv
+
 load_dotenv()
 
 class TrekTripster:

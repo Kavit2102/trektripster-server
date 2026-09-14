@@ -1,8 +1,7 @@
 import uuid
-import time
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import PointStruct, VectorParams, Distance
-from dbinstance import embeddings, qdrantClient
+from instances import embeddings, qdrantClient
 import os
 from logging import Logger
 
