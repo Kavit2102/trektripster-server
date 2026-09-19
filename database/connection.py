@@ -32,6 +32,7 @@ class DatabaseConnection:
                     "postgresql+psycopg://"
                 )
 
+            # Create the SQLAlchemy engine
             self.engine = create_engine(
                 self.database_url,
                 # echo=True,
@@ -54,7 +55,8 @@ class DatabaseConnection:
         Use migrations for production schema changes.
         """
         try:
-            SQLModel.metadata.create_all(self.engine)
+            SQLModel.metadata.create_all(self.engine) # Create all tables defined in the SQLModel classes
+            print("Tables created !!!")
         except Exception as e:
             print(f"Error creating tables: {e}")
             raise
@@ -75,6 +77,7 @@ class DatabaseConnection:
         """
         try:
             self.engine.dispose()
+            print("Connection pool disposed !!!")
         except Exception as e:
             print(f"Error disposing engine: {e}")
             raise
@@ -116,3 +119,7 @@ class DatabaseLifecycle:
         except Exception as e:
             print(f"Error disposing engine: {e}")
             raise
+
+# tables = DatabaseConnection()
+
+# tables.create_tables()

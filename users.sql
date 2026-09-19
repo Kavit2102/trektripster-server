@@ -1,5 +1,0 @@
-CREATE TABLE Users (
-    id UUID PRIMARY KEY,
-    auth_user_id TEXT UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
