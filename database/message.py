@@ -21,7 +21,7 @@ class Message:
             session.refresh(new_message)
             return new_message
 
-    def get_messages(self, user_id: str | None, conversation_id: UUID) -> Sequence[Message]:
+    def get_messages(self, user_id: str | None, conversation_id: UUID) -> Sequence[MessageBase]:
         """
         Retrieve messages from the database by user_id and conversation_id.
         """
@@ -37,7 +37,7 @@ class Message:
 
             return result
 
-    def get_message(self, message_id: UUID) -> Message:
+    def get_message(self, message_id: UUID) -> MessageBase:
         """
         Retrieve a specific message by its ID.
         """
