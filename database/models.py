@@ -52,8 +52,8 @@ class ConversationBase(SQLModel, table=True):
 
     title: str = Field(
         default="New Convo",
-        max_length=25,
-        unique=True
+        max_length=25
+        # unique=True
     )
 
     created_at: datetime = Field(

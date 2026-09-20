@@ -1,9 +1,5 @@
 
 import os
-from contextlib import asynccontextmanager
-from typing import AsyncGenerator
-
-from fastapi import FastAPI
 # from sqlalchemy.ext.asyncio import AsyncEngine
 from sqlmodel import SQLModel, create_engine
 
@@ -83,43 +79,16 @@ class DatabaseConnection:
             raise
 
 
-class DatabaseLifecycle:
-    """
-    Handles application startup and shutdown.
-    """
+# class DatabaseLifecycle:
+#     """
+#     Handles application startup and shutdown.
+#     """
 
-    def __init__(
-        self,
-        database: DatabaseConnection,
-    ) -> None:
-        self.database = database
-
-    @asynccontextmanager
-    async def lifespan(
-        self,
-        app: FastAPI,
-    ) -> AsyncGenerator[None, None]:
-
-        app.state.database = self.database 
-
-        # Initialize once at application startup.
-        try:
-            self.database.create_tables()
-            print("Tables created !!!")
-        except Exception as e:
-            print(f"Error creating tables: {e}")
-            raise
-
-        yield
-
-        # Dispose pool during shutdown.
-        try:
-            self.database.dispose()
-            print("Connection pool disposed !!!")
-        except Exception as e:
-            print(f"Error disposing engine: {e}")
-            raise
-
+#     def __init__(
+#         self,
+#         database: DatabaseConnection,
+#     ) -> None:
+#         self.database = database
 # tables = DatabaseConnection()
 
 # tables.create_tables()

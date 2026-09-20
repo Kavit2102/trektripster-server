@@ -49,8 +49,8 @@ class Conversation:
             result = session.exec(statement.order_by(ConversationBase.created_at)).all()
             return result
 
-DatabaseConnection().create_tables()
-convo = Conversation(DatabaseConnection())
+# DatabaseConnection().create_tables()
+# convo = Conversation(DatabaseConnection())
 
 # convo.create_conversation(
 #     conversation_id=UUID("12345678-1234-5678-1234-567812345678"),

@@ -1,4 +1,4 @@
-from semanticcache import SemanticCache
+from services.semanticcache import SemanticCache
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -6,7 +6,9 @@ from qdrant_client.http.models import Distance, VectorParams
 from langchain_qdrant import QdrantVectorStore
 import os
 from langchain_openai import ChatOpenAI
-from instances import embeddings, collection, qdrantClient
+from infra.collection import collection
+from infra.qdrant import qdrantClient
+from infra.embeddings import embeddings
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -34,7 +36,7 @@ class TrekTripster:
                 vectors_config=VectorParams(size=3072, distance=Distance.COSINE)
             )
 
-        print(qdrantClient.get_collections())
+        print("Collection already exists. Using existing collection")
 
     def load_documents(self, path):
         loader = PyPDFLoader(path)
