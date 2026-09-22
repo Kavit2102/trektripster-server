@@ -1,0 +1,2 @@
+SELECT *
+	FROM public.message;
