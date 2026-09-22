@@ -40,7 +40,9 @@ async def test_answer_and_persist_creates_and_updates_message():
 
     message_service.update_message.assert_called_once_with(
         message_id=message.message_id,
-        content="Generated answer",
+        content=result,
     )
 
-    trek_tripster.assert_not_called()
+    trek_tripster.answer_question.assert_called_once_with(
+    "What should I visit?"
+    )

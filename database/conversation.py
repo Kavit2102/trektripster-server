@@ -39,15 +39,23 @@ class Conversation:
         """
         Retrieve conversation messages from the database by user_id and conversation_id.
         """
+        try:
 
-        with Session(self.database.get_engine()) as session:
-            statement = select(ConversationBase)
+            with Session(self.database.get_engine()) as session:
+                statement = select(ConversationBase)
 
-            if user_id is not None:
-                statement = statement.where(ConversationBase.user_id == user_id)
+                if user_id is not None:
+                    statement = statement.where(ConversationBase.user_id == user_id)
 
-            result = session.exec(statement.order_by(ConversationBase.created_at)).all()
-            return result
+                    result = session.exec(statement.order_by(ConversationBase.created_at)).all()
+                    return result
+
+                return []
+
+        except Exception as e:
+            session.rollback()
+            print(f"Error getting conversations: {e}")
+            raise
 
 # DatabaseConnection().create_tables()
 # convo = Conversation(DatabaseConnection())
