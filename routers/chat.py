@@ -48,7 +48,7 @@ def create_router(
 
     @router.get("/history")
     async def get_history(
-        user_id: str = Header(..., alias="userid")
+        user_id: str = Header(..., alias="user_id")
     ):
 
         conversation_service = Conversation(database)
