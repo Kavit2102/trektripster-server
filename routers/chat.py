@@ -20,7 +20,7 @@ def create_router(
     @router.post("/chat-document")
     async def ask_question(
         request: ChatRequest,
-        user_id: str = Header(..., alias="userid"),
+        user_id: str = Header(..., alias="user_id"),
     ):
         if not request.question.strip():
             return {"error": "Question cannot be empty"}
@@ -47,7 +47,7 @@ def create_router(
         )
 
     @router.get("/history")
-    async def get_history(
+    async def get_conversation_history(
         user_id: str = Header(..., alias="user_id")
     ):
 
